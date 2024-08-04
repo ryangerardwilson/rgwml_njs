@@ -22,8 +22,8 @@ const CRMDashboard: React.FC<CRMDashboardProps> = ({
   openAiApiKey,
 }) => {
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold">{title}</h1>
+    <div className="p-4 bg-green-200">
+      <h1 className="text-2xl font-bold bg-green-500">{title}</h1>
       <p className="mt-2 text-sm text-gray-600">Version: {currentVersion}</p>
       {/* Render your dashboard using the provided props */}
     </div>

@@ -1,14 +1,16 @@
 {
-  "compilerOptions": {
-    "module": "CommonJS",
-    "target": "ES6",
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "strict": true,
-    "esModuleInterop": true,
-    "jsx": "react",
-    "declaration": true
-  },
-  "include": ["src"]
+ "compilerOptions": {
+   "target": "es5",
+   "module": "commonjs",
+   "jsx": "react",
+   "outDir": "./dist",
+   "rootDir": "./src",
+   "strict": true,
+   "esModuleInterop": true,
+   "skipLibCheck": true,
+   "forceConsistentCasingInFileNames": true,
+   "declaration": true
+ },
+ "include": ["src"]
 }
 
