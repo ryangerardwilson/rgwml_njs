@@ -1,34 +1,44 @@
 // src/components/CRMDasboard.tsx
 import React from 'react';
+import DynamicTable from './DynamicTable';
+import Sidebar from './Sidebar';
 import { ModalConfigMap } from './modalConfig';
 
 interface CRMDashboardProps {
-  title: string;
-  versionUrl: string;
-  currentVersion: string;
   apiHost: string;
-  modalConfig: ModalConfigMap;
-  openAiJsonModeModel: string;
-  openAiApiKey: string;
+  modal: string;
+  columns: string[];
+  data: any[];
+  modalConfigMap: ModalConfigMap;
 }
 
-const CRMDashboard: React.FC<CRMDashboardProps> = ({
-  title,
-  versionUrl,
-  currentVersion,
-  apiHost,
-  modalConfig,
-  openAiJsonModeModel,
-  openAiApiKey,
-}) => {
+const CRMDashboard: React.FC<CRMDashboardProps> = ({ apiHost, modal, columns, data, modalConfigMap }) => {
+
+  const modalConfig = modalConfigMap[modal]
+    
   return (
-    <div className="p-4 bg-green-200">
-      <h1 className="text-2xl font-bold bg-green-500">{title}</h1>
-      <p className="mt-2 text-sm text-gray-600">Version: {currentVersion}</p>
-      {/* Render your dashboard using the provided props */}
+    <div className="flex">
+      <Sidebar modalConfigMap={modalConfigMap} />
+      <div className="bg-black min-h-screen flex-1 p-8 overflow-x-auto">
+        <div className="container mx-auto">
+          <h1 className="text-yellow-100/50 mr-2 text-right">
+            {modal} table
+          </h1>
+          {!!apiHost && (
+            <DynamicTable
+              apiHost={apiHost}
+              modal={modal}
+              columns={columns}
+              data={data}
+              modalConfig={modalConfig}
+            />
+          )}
+        </div>
+      </div>
     </div>
   );
 };
 
 export default CRMDashboard;
+
 
